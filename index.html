@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>2026 네일 트렌드 퀴즈 💅</title>
+  <meta property="og:title" content="나는 2026 네일 트렌드를 얼마나 알까? 💅" />
+  <meta property="og:description" content="네일 아티스트라면 꼭 알아야 할 2026 최신 트렌드 퀴즈! 10문제, 약 2분이면 끝!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuzu111212.github.io/nail-trend-quiz/" />
+  <meta name="description" content="2026 네일 트렌드 퀴즈 - 네일 아티스트라면 꼭 알아야 할 최신 트렌드를 테스트해보세요!" />
+  <meta property="og:image" content="https://yuzu111212.github.io/nail-trend-quiz/og-nail-quiz.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:#0A1A3A;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px 16px;padding:max(20px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));overflow-x:hidden}
+    button,input,a{-webkit-appearance:none;-moz-appearance:none;appearance:none;touch-action:manipulation;font-family:inherit}
+    .card{max-width:420px;width:100%}.hidden{display:none!important}
+    .intro-card{background:linear-gradient(180deg,#1B3A6B,#0F2550);border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);position:relative;z-index:1}
+    .intro-card::before,.intro-card::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
+    .intro-card::before{top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(34,126,255,.25),transparent 70%)}
+    .intro-card::after{bottom:-40px;left:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(255,214,0,.15),transparent 70%)}
+    .intro-wrap{padding:44px 28px 36px;text-align:center;position:relative;z-index:1}
+    .intro-3d-icon{font-size:72px;display:block;margin-bottom:20px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3));animation:bounceIn .6s ease-out}
+    .intro-title{font-size:26px;font-weight:900;color:#fff;line-height:1.5;margin-bottom:12px}
+    .intro-title .hl{color:#FFD600;text-shadow:0 2px 8px rgba(255,214,0,.3)}
+    .intro-sub{font-size:14px;color:rgba(255,255,255,.65);font-weight:600;margin-bottom:28px;line-height:1.8}
+    .tag-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+    .tag{background:rgba(34,126,255,.2);color:#7CB8FF;font-size:12px;font-weight:700;padding:8px 16px;border-radius:24px;border:1px solid rgba(34,126,255,.3)}
+    .btn-start{width:100%;padding:20px;background:#FFD600;color:#1A1A1A;border:none;border-radius:16px;font-size:18px;font-weight:900;cursor:pointer;transition:all .2s;box-shadow:0 6px 20px rgba(255,214,0,.3),inset 0 -3px 0 rgba(0,0,0,.1);animation:pulse 2s ease-in-out infinite}
+    @media(hover:hover){.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,214,0,.4),inset 0 -3px 0 rgba(0,0,0,.1)}}
+    .btn-start:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(255,214,0,.2);animation:none}
+    .intro-part{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);font-weight:600}
+    .intro-part .ct{color:#7CB8FF;font-weight:800}
+    .quiz-card{background:linear-gradient(180deg,#1B3A6B,#0F2550);border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);position:relative;z-index:1}
+    .q-top{padding:22px 24px 0;display:flex;justify-content:space-between;align-items:center}
+    .q-num{font-size:13px;font-weight:800;color:#7CB8FF}
+    .q-score{font-size:12px;font-weight:700;color:#FFD600}
+    .prog-wrap{padding:14px 24px 0}.prog{width:100%;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+    .prog-fill{height:100%;background:linear-gradient(90deg,#227EFF,#5EA3FF);border-radius:4px;transition:width .4s;box-shadow:0 0 12px rgba(34,126,255,.4)}
+    .combo-banner{text-align:center;padding:4px 0 0;min-height:22px}
+    .combo-text{font-size:13px;font-weight:800;color:#FFD600;opacity:0;transition:opacity .3s;display:inline-block}
+    .combo-text.show{opacity:1;animation:comboPopIn .4s ease-out}
+    @keyframes comboPopIn{0%{transform:scale(.5) translateY(8px);opacity:0}60%{transform:scale(1.15) translateY(-2px)}100%{transform:scale(1) translateY(0);opacity:1}}
+    .q-card{background:#fff;border-radius:22px;margin:8px 16px 20px;padding:28px 22px 24px;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:transform .1s,box-shadow .4s,border-color .4s,filter .4s;border:2.5px solid transparent}
+    .q-card.shake{animation:shake .4s ease-in-out}
+    .q-card.vibe-1{border-color:rgba(34,126,255,.35);box-shadow:0 4px 20px rgba(34,126,255,.15)}
+    .q-card.vibe-2{border-color:rgba(90,230,124,.45);box-shadow:0 4px 24px rgba(90,230,124,.2)}
+    .q-card.vibe-3{border-color:rgba(138,79,255,.5);box-shadow:0 4px 24px rgba(138,79,255,.25)}
+    .q-card.vibe-4{border-color:rgba(255,107,230,.5);box-shadow:0 4px 28px rgba(255,107,230,.25)}
+    .q-card.vibe-5{border-color:rgba(255,214,0,.6);box-shadow:0 0 32px rgba(255,214,0,.3),0 0 60px rgba(255,107,230,.1)}
+    .q-card.gray-out{filter:grayscale(.85) brightness(.92);border-color:#888;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .q-badge{display:inline-block;color:#fff;font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:1px;transition:background .3s}
+    .q-badge.cat-trend{background:#227EFF}
+    .q-badge.cat-tech{background:#22CC5E}
+    .q-badge.cat-material{background:#B44DFF}
+    .q-text{font-size:16px;font-weight:800;color:#1A1A1A;line-height:1.75;margin-bottom:24px}
+    .options{display:flex;flex-direction:column;gap:10px}
+    .option{padding:16px 18px;border:2px solid #E8ECF2;border-radius:14px;font-size:14px;font-weight:600;color:#333;cursor:pointer;transition:all .2s;text-align:left;background:#F8F9FC;display:flex;align-items:center;gap:14px}
+    @media(hover:hover){.option:hover:not(:disabled):not(.sel){background:#EEF3FF;border-color:#227EFF;transform:translateY(-1px)}}
+    .option .ol{width:32px;height:32px;min-width:32px;background:#E8ECF2;color:#5A6678;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:10px;flex-shrink:0;transition:all .2s}
+    .option.sel{background:#227EFF;border-color:#227EFF;color:#fff;box-shadow:0 4px 16px rgba(34,126,255,.35)}
+    .option.sel .ol{background:rgba(255,255,255,.2);color:#fff}
+    .option.correct-flash{background:#22CC5E!important;border-color:#22CC5E!important;color:#fff!important;box-shadow:0 4px 16px rgba(34,204,94,.4)!important}
+    .option.correct-flash .ol{background:rgba(255,255,255,.25)!important;color:#fff!important}
+    .option.wrong-flash{background:#FF4D6A!important;border-color:#FF4D6A!important;color:#fff!important;box-shadow:0 4px 16px rgba(255,77,106,.4)!important}
+    .option.wrong-flash .ol{background:rgba(255,255,255,.25)!important;color:#fff!important}
+    .option:disabled{cursor:default}
+    .particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:99}
+    .particle{position:absolute;border-radius:50%;animation:particleFly 1s ease-out forwards;pointer-events:none}
+    @keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+    .flash-overlay{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:28px;pointer-events:none;opacity:0;z-index:50;transition:opacity .15s}
+    .flash-overlay.green{background:rgba(34,204,94,.12);opacity:1}
+    .flash-overlay.red{background:rgba(255,77,106,.1);opacity:1}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+    .break-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(15,37,80,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;border-radius:28px;opacity:0;pointer-events:none;transition:opacity .3s}
+    .break-overlay.show{opacity:1;pointer-events:auto}
+    .break-emoji{font-size:64px;margin-bottom:16px;animation:bounceIn .5s ease-out}
+    .break-title{color:#FFD600;font-size:24px;font-weight:900;margin-bottom:8px}
+    .break-sub{color:rgba(255,255,255,.6);font-size:14px;font-weight:600;text-align:center;line-height:1.7;margin-bottom:8px}
+    .break-score{color:#7CB8FF;font-size:13px;font-weight:700;margin-bottom:24px}
+    .btn-continue{padding:16px 48px;background:#FFD600;color:#1A1A1A;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(255,214,0,.3);transition:all .2s}
+    .btn-continue:active{transform:translateY(2px);box-shadow:0 2px 8px rgba(255,214,0,.2)}
+    .result-card{background:linear-gradient(180deg,#1B3A6B,#0F2550);border-radius:28px;overflow:visible;box-shadow:0 12px 40px rgba(0,0,0,.4);position:relative;z-index:1}
+    .result-top{padding:40px 24px 32px;text-align:center;position:relative}
+    .result-top::before{content:'';position:absolute;top:-30px;right:-20px;width:140px;height:140px;background:radial-gradient(circle,rgba(34,126,255,.2),transparent 70%);border-radius:50%;pointer-events:none}
+    .res-emoji{font-size:72px;display:block;margin-bottom:16px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));animation:bounceIn .6s ease-out}
+    .res-badge{display:inline-block;background:rgba(255,214,0,.15);color:#FFD600;font-size:11px;font-weight:800;padding:6px 20px;border-radius:20px;letter-spacing:2px;margin-bottom:8px;border:1px solid rgba(255,214,0,.25)}
+    .res-title{color:#fff;font-size:26px;font-weight:900;line-height:1.5;margin-bottom:6px}
+    .res-subtitle{color:rgba(255,255,255,.5);font-size:13px;font-weight:700}
+    .type-card{background:#fff;border-radius:22px;margin:-12px 16px 0;padding:28px 22px 24px;box-shadow:0 4px 24px rgba(0,0,0,.15);position:relative;z-index:2}
+    .t-score-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
+    .t-score-num{font-size:48px;font-weight:900;color:#227EFF;line-height:1}
+    .t-score-label{font-size:14px;color:#AAB3C0;font-weight:700}
+    .t-stats{display:flex;gap:8px;margin-bottom:12px}
+    .t-stat{flex:1;background:#F4F6FA;border-radius:14px;padding:14px 10px;text-align:center}
+    .t-stat-val{font-size:18px;font-weight:900;color:#227EFF}
+    .t-stat-lbl{font-size:10px;color:#888;font-weight:600;margin-top:2px}
+    .t-stats-extra{display:flex;gap:8px;margin-bottom:20px}
+    .t-stat-extra{flex:1;background:linear-gradient(135deg,#FFF8E1,#FFF3CD);border-radius:14px;padding:12px 10px;text-align:center}
+    .t-stat-extra .t-stat-val{color:#E6A800}
+    .t-stat-extra .t-stat-lbl{color:#B8860B}
+    .t-desc{background:linear-gradient(135deg,#F0F4FF,#F8F4FF);border-radius:14px;padding:18px;font-size:14px;color:#3D3E5C;line-height:1.8;font-weight:600;text-align:center}
+    .t-tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    .t-tag{background:#227EFF;color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px}
+    .wrong-section{padding:16px 16px 0}
+    .wrong-toggle{width:100%;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;color:rgba(255,255,255,.6);font-size:13px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+    .wrong-toggle:active{background:rgba(255,255,255,.1)}
+    .wrong-toggle .arr{transition:transform .3s}.wrong-toggle.open .arr{transform:rotate(180deg)}
+    .wrong-list{max-height:0;overflow:hidden;transition:max-height .4s ease}.wrong-list.open{max-height:3000px}
+    .wrong-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px;margin-bottom:8px}
+    .wrong-item:first-child{margin-top:12px}
+    .wrong-item-q{font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:10px;line-height:1.6}
+    .wrong-item-a{font-size:12px;color:rgba(255,255,255,.55);font-weight:600;line-height:1.7}
+    .wrong-item-a .my{color:#FF6B8A;text-decoration:line-through}.wrong-item-a .ok{color:#5AE67C;font-weight:800}
+    .all-ok{background:rgba(90,230,124,.1);border:1px solid rgba(90,230,124,.2);border-radius:14px;padding:20px;text-align:center;font-size:14px;font-weight:700;color:#5AE67C;line-height:1.7}
+    .share-sec{padding:16px 16px 0;display:flex;gap:10px}
+    .btn-save{flex:1;padding:16px;background:rgba(34,126,255,.15);color:#7CB8FF;border:1px solid rgba(34,126,255,.3);border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+    .btn-save:active{background:rgba(34,126,255,.25)}
+    .btn-share{flex:1;padding:16px;background:rgba(255,214,0,.12);color:#FFD600;border:1px solid rgba(255,214,0,.25);border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+    .btn-share:active{background:rgba(255,214,0,.2)}
+    .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:#333;color:#fff;padding:14px 28px;border-radius:14px;font-size:14px;font-weight:700;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .cta-sec{padding:20px 16px 0}
+    .cta-box{background:linear-gradient(135deg,#227EFF,#1A5FCC);border-radius:20px;padding:28px 22px;text-align:center;position:relative;overflow:hidden}
+    .cta-box::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:rgba(255,255,255,.08);border-radius:50%;pointer-events:none}
+    .cta-icon{font-size:40px;display:block;margin-bottom:12px}
+    .cta-txt{color:rgba(255,255,255,.9);font-size:14px;font-weight:700;line-height:1.8;margin-bottom:16px}
+    .btn-cta{display:block;width:100%;padding:18px 12px;background:#FFD600;color:#1A1A1A;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;text-align:center;transition:all .2s;text-decoration:none;box-shadow:0 4px 16px rgba(255,214,0,.3),inset 0 -3px 0 rgba(0,0,0,.08);position:relative;z-index:1}
+    @media(hover:hover){.btn-cta:hover{transform:translateY(-2px)}}
+    .btn-cta:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(255,214,0,.2)}
+    .btn-cta .sub{font-size:11px;color:#666;display:block;margin-top:4px;font-weight:600}
+    .res-bottom{padding:12px 16px 24px}
+    .retry-btn{width:100%;padding:16px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12);border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+    @media(hover:hover){.retry-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}}
+    .retry-btn:active{background:rgba(255,255,255,.14)}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .anim{animation:fadeInUp .45s ease forwards}
+    @keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.05)}70%{transform:scale(.95)}100%{transform:scale(1);opacity:1}}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+    @media(max-width:360px){.intro-title{font-size:22px}.intro-3d-icon{font-size:60px}.q-text{font-size:15px}.intro-wrap{padding:36px 22px 30px}.q-card{padding:24px 18px 20px;margin:8px 14px 18px}.result-top{padding:32px 20px 26px}.t-score-num{font-size:40px}}
+    @media(max-width:280px){.intro-title{font-size:19px}.option{padding:12px 14px;font-size:13px;gap:10px}.option .ol{width:26px;height:26px;min-width:26px;font-size:11px}}
+    #result-canvas{display:none}
+  </style>
+</head>
+<body>
+<div class="card" id="app">
+  <div id="screen-intro" class="intro-card anim">
+    <div class="intro-wrap">
+      <span class="intro-3d-icon">💅</span>
+      <div class="intro-title">나는 <span class="hl">2026 네일 트렌드</span>를<br>얼마나 알까?</div>
+      <p class="intro-sub">네일 아티스트라면 꼭 알아야 할<br>2026 최신 트렌드를 테스트해보세요!</p>
+      <div class="tag-row">
+        <span class="tag">✨ 10문제</span><span class="tag">⏱ 약 2분</span><span class="tag">💅 NAIL</span>
+      </div>
+      <button class="btn-start" onclick="startQuiz()">테스트 시작하기</button>
+      <div class="intro-part"><span>🔥</span><span><span class="ct" id="part-count">2,847</span>명이 참여 중</span></div>
+    </div>
+  </div>
+  <div id="screen-quiz" class="quiz-card hidden">
+    <div class="q-top">
+      <span class="q-num" id="q-label">Q1 / 10</span>
+      <span class="q-score" id="q-score">⭐ 0점</span>
+    </div>
+    <div class="prog-wrap"><div class="prog"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div></div>
+    <div class="combo-banner"><span class="combo-text" id="combo-text"></span></div>
+    <div class="q-card anim" id="q-card">
+      <div class="q-badge cat-trend" id="q-badge">QUESTION 01</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options" id="q-opts"></div>
+    </div>
+    <div class="flash-overlay" id="flash-overlay"></div>
+    <div class="particles" id="particles"></div>
+    <div class="break-overlay" id="break-overlay">
+      <span class="break-emoji" id="break-emoji">💪</span>
+      <div class="break-title" id="break-title">절반 완료!</div>
+      <div class="break-sub" id="break-sub">벌써 5문제나 풀었어요!<br>나머지 5문제도 화이팅 🔥</div>
+      <div class="break-score" id="break-score">현재 점수: 3 / 5</div>
+      <button class="btn-continue" onclick="closeBreak()">계속하기 →</button>
+    </div>
+  </div>
+  <div id="screen-result" class="result-card hidden">
+    <div class="result-top">
+      <span class="res-emoji" id="res-emoji">✨</span>
+      <span class="res-badge" id="res-badge">TREND SETTER</span>
+      <div class="res-title" id="res-title">트렌드세터</div>
+      <div class="res-subtitle" id="res-sub">상위 10%의 감각</div>
+    </div>
+    <div class="type-card">
+      <div class="t-score-row">
+        <div class="t-score-num" id="res-score">0</div>
+        <div style="text-align:left"><div class="t-score-label">/ 10점</div><div class="t-score-label" id="res-pct" style="color:#227EFF;font-weight:800">상위 15%</div></div>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-val" id="st-trend">?</div><div class="t-stat-lbl">트렌드 감각</div></div>
+        <div class="t-stat"><div class="t-stat-val" id="st-tech">?</div><div class="t-stat-lbl">시술 지식</div></div>
+        <div class="t-stat"><div class="t-stat-val" id="st-mat">?</div><div class="t-stat-lbl">재료 이해도</div></div>
+      </div>
+      <div class="t-stats-extra">
+        <div class="t-stat-extra"><div class="t-stat-val" id="st-combo">?</div><div class="t-stat-lbl">최대 연속정답</div></div>
+        <div class="t-stat-extra"><div class="t-stat-val" id="st-time">?</div><div class="t-stat-lbl">평균 응답시간</div></div>
+      </div>
+      <div class="t-desc" id="res-desc"></div>
+      <div class="t-tags" id="res-tags"></div>
+    </div>
+    <div class="share-sec">
+      <button class="btn-save" onclick="saveImg()">📸 이미지 저장</button>
+      <button class="btn-share" onclick="shareQuiz()">📤 공유하기</button>
+    </div>
+    <div class="wrong-section" id="wrong-sec"></div>
+    <div class="cta-sec">
+      <div class="cta-box">
+        <span class="cta-icon">🛍️</span>
+        <div class="cta-txt">2026 트렌드 네일 재료<br>최저가로 구해보세요!</div>
+        <a href="https://smartstore.naver.com/gongbizstore?utm_source=nail_quiz&utm_medium=cta&utm_campaign=trend2026" target="_blank" class="btn-cta">💅 최저가 네일재료 구매하기<span class="sub">공비서스토어 스마트스토어 →</span></a>
+      </div>
+    </div>
+    <div class="res-bottom"><button class="retry-btn" onclick="retryQuiz()">↺ 다시 도전하기</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<canvas id="result-canvas" width="720" height="1280"></canvas>
+<script>
+const QUIZ_URL='https://yuzu111212.github.io/nail-trend-quiz/';
+const Q=[{q:"2026 팬톤 올해의 컬러 '클라우드 댄서'와 네일 트렌드에서 가장 비슷한 무드를 가진 스타일은?",o:["매트 블랙 네일","네온 코랄 네일","밀크 네일","다크 마블 네일"],a:2,c:"trend",e:"클라우드 댄서는 몽환적 화이트 계열! '밀크 네일'의 뽀얗고 부드러운 무드와 딱 맞아요."},{q:"'자석젤(캣아이 젤)'로 디자인 작업 시 마그넷을 대야 하는 올바른 타이밍은?",o:["경화 직전, 미경화 상태일 때","UV 램프 완전 경화 후","베이스 젤 도포 전","탑젤까지 모두 올린 후"],a:0,c:"tech",e:"반드시 경화 전 미경화 상태에서! 경화 후엔 이미 굳어서 캣아이 라인이 안 만들어져요."},{q:"'시럽 네일'과 '워터컬러 네일'의 공통된 핵심 특징은?",o:["두꺼운 매트 마감","3D 입체 볼륨","글리터 풀커버","반투명하고 맑은 발색감"],a:3,c:"trend",e:"둘 다 완전히 덮이지 않는 반투명하고 맑은 발색이 핵심! 얇게 겹쳐 깊이감을 표현해요."},{q:"'오마카세 네일'에서 손톱마다 다른 디자인이어도 통일감을 주는 방법은?",o:["모든 손톱에 동일한 컬러 사용","같은 컬러 팔레트 안에서 디자인만 다르게","한 손에만 믹스매치","엄지손톱만 포인트 디자인"],a:1,c:"trend",e:"디자인은 달라도 컬러 팔레트·무드를 통일하는 것이 핵심! 그래야 세트처럼 보여요."},{q:"'레인드롭 3D 네일'에서 물방울 효과를 만들 때 주로 사용하는 재료는?",o:["일반 클리어 컬러젤","아크릴 파우더","일반 탑젤 여러 번 겹치기","빌더젤 또는 하드젤"],a:3,c:"material",e:"볼록한 3D 효과는 점도 높은 빌더젤·하드젤로만! 일반 탑젤은 퍼져서 형태 유지가 안 돼요."},{q:"2026 트렌드 '글라스 네일' 완성도를 극대화하는 마무리 방법은?",o:["크롬 파우더 전면 도포","초고광 노와이프 탑젤 여러 겹 레이어링","무광 매트 탑젤 마감","매트+글로시 하프앤하프 마감"],a:1,c:"tech",e:"노와이프 초고광 탑젤을 여러 번 레이어링해 유리 같은 깊은 광택을 만드는 게 핵심이에요!"},{q:"'오로라 파우더'와 일반 '크롬 파우더'의 결정적인 차이는?",o:["크롬은 단일 컬러, 오로라는 각도 따라 여러 색으로 보인다","오로라 파우더가 더 저렴하다","오로라는 UV 램프 없이 경화된다","크롬만 젤 위에 사용 가능하다"],a:0,c:"material",e:"크롬은 고정 단일 컬러, 오로라는 빛과 각도에 따라 여러 색으로 바뀌는 멀티컬러 효과예요!"},{q:"소프트젤과 하드젤의 가장 큰 차이는?",o:["사용하는 UV 램프 종류","발색 투명도 차이","아세톤으로 제거 가능 여부","도포 두께 차이"],a:2,c:"material",e:"소프트젤은 아세톤으로 제거 가능, 하드젤은 아세톤에 안 녹아서 파일로만 제거해요!"},{q:"'밀크 베이스 네일' 작업 시 자연스러운 커버력을 위해 권장되는 도포 방식은?",o:["베이스젤과 1:1 혼합 후 1회 도포","1회 두껍게 올리기","2~3회 얇게 겹쳐 올리기","5회 이상 최대한 많이 올리기"],a:2,c:"tech",e:"한 번에 두껍게 올리면 기포·뭉침 발생! 얇게 2~3회 겹치는 게 균일한 커버력의 비결이에요."},{q:"네일 드릴 비트 중 젤·아크릴 제거 작업에 가장 적합한 소재는?",o:["세라믹 비트","다이아몬드 비트","실리콘 버프 비트","카바이드 비트"],a:3,c:"material",e:"카바이드 비트는 젤·아크릴 제거 전용! 다이아몬드는 자연손톱·큐티클, 실리콘은 광택 마감용이에요."}];
+const TYPES=[{min:0,max:3,emoji:"🌱",badge:"NAIL EXPLORER",title:"네일 탐험가",sub:"무한한 가능성의 시작!",desc:"새로운 것에 호기심이 넘치는 당신!\n2026 트렌드를 이제 막 발견하기 시작했어요.\n이 호기심이면 금방 전문가가 될 거예요 🔥",tags:["#호기심왕","#트렌드입문","#성장형"],pct:"도전 정신 상위 20%"},{min:4,max:6,emoji:"💜",badge:"NAIL INFLUENCER",title:"네일 인플루언서",sub:"감각이 남다른 당신!",desc:"이 정도 실력이면 주변 친구들이\n네일 추천을 물어보는 수준!\n센스 있는 선택을 하는 타입이에요 ✨",tags:["#감각파","#추천러","#센스쟁이"],pct:"감각 상위 35%"},{min:7,max:9,emoji:"✨",badge:"TREND SETTER",title:"트렌드세터",sub:"업계가 주목하는 감각!",desc:"2026 트렌드를 꿰뚫고 있는 당신은\n네일샵 원장님이나 아티스트급!\n이 감각이면 어디서든 인정받아요 👏",tags:["#프로급","#트렌드리더","#아티스트"],pct:"실력 상위 12%"},{min:10,max:10,emoji:"👑",badge:"NAIL MASTER",title:"네일 마스터",sub:"살아있는 교과서!",desc:"만점! 당신은 2026 네일 트렌드의\n모든 것을 꿰고 있는 레전드예요.\n이 퀴즈 만든 사람보다 잘 알걸요? 😂",tags:["#만점자","#네일교과서","#레전드"],pct:"상위 3% 마스터"}];
+const COMBO_MSG=['','','🔥 2연속!','🔥🔥 3연속 정답!','⚡ 4연속!! 대단해요!','💥 5연속!!! 미쳤다!','🌈 6연속!!!! 천재?!','👑 7연속!!!!! 프로다 프로!','🚀 8연속!!! 전설이 될 기세!','💎 9연속!!!! 거의 만점이야!','🏆 10연속 퍼펙트!!!! 네일 신이시다!'];
+let cur=0,score=0,ua=[],combo=0,maxCombo=0;
+let qStart=0,totalTime=0;
+let vibe=0;
+(function(){const n=2800+Math.floor(Math.random()*420);document.getElementById('part-count').textContent=n.toLocaleString()})();
+function $(id){return document.getElementById(id)}
+function hide(id){$(id).classList.add('hidden')}
+function startQuiz(){cur=0;score=0;ua=[];combo=0;maxCombo=0;vibe=0;totalTime=0;hide('screen-intro');hide('screen-result');const q=document.getElementById('screen-quiz');q.classList.remove('hidden');q.classList.add('anim');window.scrollTo({top:0,behavior:'smooth'});render()}
+function render(){const q=Q[cur],tot=Q.length;$('q-label').textContent=`Q${cur+1} / ${tot}`;$('q-score').textContent=`⭐ ${score}점`;$('q-badge').textContent=`QUESTION ${String(cur+1).padStart(2,'0')}`;$('q-text').textContent=q.q;$('prog-fill').style.width=`${(cur/tot)*100}%`;const badge=$('q-badge');badge.className='q-badge cat-'+q.c;const ct=$('combo-text');ct.classList.remove('show');ct.textContent='';updateVibeClass();const opts=$('q-opts');opts.innerHTML='';['A','B','C','D'].forEach((l,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML=`<span class="ol">${l}</span>${q.o[i]}`;b.onclick=()=>pick(i);opts.appendChild(b)});const card=$('q-card');card.classList.remove('anim','shake','gray-out');void card.offsetWidth;card.classList.add('anim');qStart=Date.now()}
+function updateVibeClass(){const card=$('q-card');for(let i=0;i<=5;i++)card.classList.remove('vibe-'+i);card.classList.remove('gray-out');if(vibe>0)card.classList.add('vibe-'+Math.min(vibe,5))}
+function pick(idx){const opts=document.querySelectorAll('.option');if(opts[0].disabled)return;opts.forEach(b=>b.disabled=true);totalTime+=Date.now()-qStart;const correct=idx===Q[cur].a;ua.push(idx);if(correct){score++;combo++;if(combo>maxCombo)maxCombo=combo;vibe=Math.min(vibe+1,5);$('q-score').textContent=`⭐ ${score}점`;opts[idx].classList.add('correct-flash');opts[Q[cur].a].classList.add('correct-flash');flashScreen('green');spawnParticles();updateVibeClass();if(combo>=2){const ct=$('combo-text');ct.textContent=COMBO_MSG[Math.min(combo,10)];ct.classList.remove('show');void ct.offsetWidth;ct.classList.add('show')}}else{combo=0;vibe=0;opts[idx].classList.add('wrong-flash');opts[Q[cur].a].classList.add('correct-flash');flashScreen('red');const card=$('q-card');card.classList.add('shake','gray-out');for(let i=1;i<=5;i++)card.classList.remove('vibe-'+i)}setTimeout(()=>{cur++;if(cur===5){showBreak()}else if(cur>=Q.length){showResult()}else{render()}},900)}
+function flashScreen(color){const f=$('flash-overlay');f.className='flash-overlay '+color;setTimeout(()=>f.className='flash-overlay',400)}
+function spawnParticles(){const container=$('particles');const colors=['#FFD600','#5AE67C','#7CB8FF','#FF6BE6','#FF9F43'];for(let i=0;i<18;i++){const p=document.createElement('div');p.className='particle';const size=6+Math.random()*8;p.style.width=size+'px';p.style.height=size+'px';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.left=30+Math.random()*60+'%';p.style.top=30+Math.random()*40+'%';p.style.setProperty('--tx',(Math.random()-.5)*200+'px');p.style.setProperty('--ty',(Math.random()-.5)*200+'px');container.appendChild(p);setTimeout(()=>p.remove(),1000)}}
+function showBreak(){const msgs=[{emoji:'💪',title:'절반 완료!',sub:'벌써 5문제나 풀었어요!<br>나머지 5문제도 화이팅 🔥'},{emoji:'🔥',title:'반환점 통과!',sub:'여기까지 잘하고 있어요!<br>뒷심이 중요한 법 💪'},{emoji:'✨',title:'5문제 클리어!',sub:'잠깐 숨 돌리고<br>남은 5문제 도전해요!'}];const m=msgs[Math.floor(Math.random()*msgs.length)];$('break-emoji').textContent=m.emoji;$('break-title').textContent=m.title;$('break-sub').innerHTML=m.sub;$('break-score').textContent=`현재 점수: ${score} / 5`;$('break-overlay').classList.add('show')}
+function closeBreak(){$('break-overlay').classList.remove('show');setTimeout(render,200)}
+function catScores(){const s={trend:0,tech:0,material:0},t={trend:0,tech:0,material:0};Q.forEach((q,i)=>{t[q.c]++;if(ua[i]===q.a)s[q.c]++});return{trend:Math.round(s.trend/t.trend*100),tech:Math.round(s.tech/t.tech*100),material:Math.round(s.material/t.material*100)}}
+function countUp(el,target,duration){if(target===0){el.textContent='0';return}const start=performance.now();function step(now){const p=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+function showResult(){hide('screen-quiz');const r=$('screen-result');r.classList.remove('hidden');r.classList.add('anim');window.scrollTo({top:0,behavior:'smooth'});const ty=TYPES.find(x=>score>=x.min&&score<=x.max);const cs=catScores();const avgSec=(totalTime/Q.length/1000).toFixed(1);$('res-emoji').textContent=ty.emoji;$('res-badge').textContent=ty.badge;$('res-title').textContent=ty.title;$('res-sub').textContent=ty.sub;$('res-pct').textContent=ty.pct;$('res-desc').textContent=ty.desc;$('st-trend').textContent=cs.trend+'%';$('st-tech').textContent=cs.tech+'%';$('st-mat').textContent=cs.material+'%';$('st-combo').textContent=maxCombo+'연속';$('st-time').textContent=avgSec+'초';$('res-tags').innerHTML=ty.tags.map(t=>`<span class="t-tag">${t}</span>`).join('');countUp($('res-score'),score,800);const ws=$('wrong-sec');ws.innerHTML='';const wr=[];ua.forEach((a,i)=>{if(a!==Q[i].a)wr.push(i)});if(!wr.length){ws.innerHTML='<div class="all-ok">🎉 전부 맞혔어요! 진짜 네일 전문가!</div>'}else{const L=['A','B','C','D'];let h='';wr.forEach(i=>{const q=Q[i];h+=`<div class="wrong-item"><div class="wrong-item-q">Q${i+1}. ${q.q}</div><div class="wrong-item-a">내 답: <span class="my">${L[ua[i]]}. ${q.o[ua[i]]}</span><br>정답: <span class="ok">${L[q.a]}. ${q.o[q.a]}</span><br>💡 ${q.e}</div></div>`});ws.innerHTML=`<button class="wrong-toggle" onclick="toggleW(this)">📝 틀린 문제 ${wr.length}개 확인하기 <span class="arr">▼</span></button><div class="wrong-list" id="wlist">${h}</div>`}}
+function toggleW(b){b.classList.toggle('open');$('wlist').classList.toggle('open')}
+function retryQuiz(){hide('screen-result');$('screen-intro').classList.remove('hidden');$('screen-intro').classList.add('anim');window.scrollTo({top:0,behavior:'smooth'});cur=0;score=0;ua=[];combo=0;maxCombo=0;vibe=0;totalTime=0}
+async function shareQuiz(){const ty=TYPES.find(x=>score>=x.min&&score<=x.max);const text=`💅 나는 "${ty.title}" — ${score}/10점!\n2026 네일 트렌드 퀴즈 도전해봐!`;if(navigator.share){try{await navigator.share({title:'2026 네일 트렌드 퀴즈 💅',text:text,url:QUIZ_URL});return}catch(e){}}const full=text+'\n'+QUIZ_URL;if(navigator.clipboard){navigator.clipboard.writeText(full).then(()=>toast('📋 공유 텍스트가 복사되었어요!'))}else{const t=document.createElement('textarea');t.value=full;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);toast('📋 공유 텍스트가 복사되었어요!')}}
+function saveImg(){const cv=$('result-canvas'),W=720,H=1280;cv.width=W;cv.height=H;const ctx=cv.getContext('2d');ctx.fillStyle='#0F2550';ctx.fillRect(0,0,W,H);const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#1B3A6B');bg.addColorStop(1,'#0A1A3A');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);ctx.beginPath();ctx.arc(600,100,120,0,Math.PI*2);ctx.fillStyle='rgba(34,126,255,.12)';ctx.fill();ctx.beginPath();ctx.arc(120,1100,90,0,Math.PI*2);ctx.fillStyle='rgba(255,214,0,.08)';ctx.fill();const ty=TYPES.find(x=>score>=x.min&&score<=x.max),cs=catScores();const avgSec=(totalTime/Q.length/1000).toFixed(1);ctx.textAlign='center';ctx.font='80px sans-serif';ctx.fillStyle='#fff';ctx.fillText(ty.emoji,W/2,180);ctx.font='bold 16px sans-serif';ctx.fillStyle='#FFD600';ctx.fillText(ty.badge,W/2,240);ctx.font='900 42px sans-serif';ctx.fillStyle='#fff';ctx.fillText(ty.title,W/2,300);ctx.font='600 18px sans-serif';ctx.fillStyle='rgba(255,255,255,.5)';ctx.fillText(ty.sub,W/2,340);rr(ctx,60,390,W-120,350,24);ctx.fillStyle='#fff';ctx.fill();ctx.font='900 72px sans-serif';ctx.fillStyle='#227EFF';ctx.fillText(score,W/2-30,480);ctx.font='bold 20px sans-serif';ctx.fillStyle='#AAB3C0';ctx.fillText('/ 10점',W/2+60,480);ctx.font='bold 14px sans-serif';ctx.fillStyle='#227EFF';ctx.fillText(ty.pct,W/2,520);const sW=(W-120-24)/3;['트렌드 감각','시술 지식','재료 이해도'].forEach((l,i)=>{const v=[cs.trend,cs.tech,cs.material][i],x=72+i*(sW+12);rr(ctx,x,555,sW,90,12);ctx.fillStyle='#F4F6FA';ctx.fill();ctx.font='900 24px sans-serif';ctx.fillStyle='#227EFF';ctx.textAlign='center';ctx.fillText(v+'%',x+sW/2,595);ctx.font='600 11px sans-serif';ctx.fillStyle='#888';ctx.fillText(l,x+sW/2,620)});const eW=(W-120-12)/2;[{l:'최대 연속정답',v:maxCombo+'연속'},{l:'평균 응답시간',v:avgSec+'초'}].forEach((d,i)=>{const x=72+i*(eW+12);rr(ctx,x,660,eW,70,12);ctx.fillStyle='#FFF8E1';ctx.fill();ctx.font='800 18px sans-serif';ctx.fillStyle='#E6A800';ctx.textAlign='center';ctx.fillText(d.v,x+eW/2,695);ctx.font='600 10px sans-serif';ctx.fillStyle='#B8860B';ctx.fillText(d.l,x+eW/2,715)});rr(ctx,60,780,W-120,240,20);ctx.fillStyle='rgba(34,126,255,.15)';ctx.fill();ctx.font='600 18px sans-serif';ctx.fillStyle='#fff';ctx.textAlign='center';ty.desc.split('\n').forEach((l,i)=>ctx.fillText(l,W/2,835+i*32));ctx.font='bold 14px sans-serif';ctx.fillStyle='#7CB8FF';ctx.fillText(ty.tags.join('  '),W/2,960);rr(ctx,60,1060,W-120,100,20);ctx.fillStyle='rgba(255,214,0,.12)';ctx.fill();ctx.font='bold 16px sans-serif';ctx.fillStyle='#FFD600';ctx.fillText('2026 NAIL TREND QUIZ',W/2,1105);ctx.font='600 12px sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.fillText('gongbizstore',W/2,1130);ctx.font='600 11px sans-serif';ctx.fillStyle='rgba(255,255,255,.3)';ctx.fillText('yuzu111212.github.io/nail-trend-quiz',W/2,1210);try{const dataUrl=cv.toDataURL('image/png');const a=document.createElement('a');a.href=dataUrl;a.download='네일트렌드퀴즈_결과.png';document.body.appendChild(a);a.click();document.body.removeChild(a);toast('📸 이미지가 저장되었어요!')}catch(e){toast('⚠️ 이미지 저장 실패 - 스크린샷을 이용해주세요')}}
+function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath()}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+</script>
+</body>
+</html>
